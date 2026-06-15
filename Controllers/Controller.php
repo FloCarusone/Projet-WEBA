@@ -11,7 +11,12 @@ class Controller {
         $this->model = new Model(withErrors: true);
     }
 
-    // TODO
+    public function getCourses(): Response {
+
+        $courses = $this->model->getCourses();
+
+        return new Response(httpCode: 200, responseString: json_encode($courses));
+    }
 }
 
 ?>

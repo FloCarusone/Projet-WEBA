@@ -14,6 +14,12 @@ class Router {
 
         // TODO
 
+        if($method === 'GET'){
+
+            if($action === 'getCourses'){
+                return $controller->getCourses();
+            }
+        }
         return null;
     }
 }
