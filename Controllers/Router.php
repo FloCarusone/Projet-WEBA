@@ -7,7 +7,7 @@ class Router {
     public static function route(string $method, ?string $action): Response|null {
 
         if ($action == null) {
-            return new Response(httpCode: 400);
+            return new Response(httpCode: 400, responseString: json_encode("Action required"));
         }
 
         $controller = new Controller();
@@ -16,8 +16,8 @@ class Router {
 
         if($method === 'GET'){
 
-            if($action === 'getCourses'){
-                return $controller->getCourses();
+            if($action === 'courses'){
+                return $controller->courses();
             }
         }
         return null;

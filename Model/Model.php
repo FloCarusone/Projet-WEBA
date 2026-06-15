@@ -12,7 +12,7 @@ class Model {
         } 
     }
 
-    public function getCourses(): array {
+    public function courses(): array {
         $stmt = $this->db->prepare("SELECT id, name, deadline FROM course");
 
         $stmt->execute();
