@@ -10,13 +10,13 @@ class SecurityHelper {
 
         $authHeader = $headers['Authorization'] ?? '';
         
-        if(!str_starts_with($authHeader, 'Bearer')){
+        if(!str_starts_with($authHeader, 'Bearer ')){
             return false;
         }
 
         $receivedKey = substr($authHeader, 7);
 
-        return $receivedKey === self::$apikey;
+        return $receivedKey === self::$apiKey;
     }
 
     public static function generateAPIAccessError() {
