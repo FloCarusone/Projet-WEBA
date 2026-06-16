@@ -11,10 +11,17 @@ class Controller {
         $this->model = new Model(withErrors: true);
     }
 
-    public function getCourses(): Response {
+    public function courses(): Response {
 
-        $courses = $this->model->getCourses();
+        $courses = $this->model->courses();
 
+        return new Response(httpCode: 200, responseString: json_encode($courses));
+    }
+
+    public function coursesWithExercises(): Response {
+
+        $courses = $this->model->coursesWithExercises();
+        
         return new Response(httpCode: 200, responseString: json_encode($courses));
     }
 }
