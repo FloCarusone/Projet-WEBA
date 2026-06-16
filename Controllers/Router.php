@@ -14,10 +14,14 @@ class Router {
 
         // TODO
 
-        if($method === 'GET'){
+        if ($action === 'courses') {
 
-            if($action === 'courses'){
-                return $controller->courses();
+            if ($method === 'GET' && isset($_GET['id'])) {
+                return $controller->courseDetails($_GET['id']);
+            }
+
+            if ($method === 'GET' && $_GET['withExercises'] === 'true') {
+                return $controller->coursesWithExercises();
             }
         }
         return null;

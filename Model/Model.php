@@ -20,5 +20,20 @@ class Model {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function coursesWithExercises(): array {
+        $stmt = $this->db->prepare("SELECT id, name, deadline FROM course");
+        $stmt->execute();
+        $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($courses as &$course) {
+            $stmt2 = $this->db->prepare(
+                "SELECT id, name, description, finished FROM exercise WHERE courseId = ?"
+            );
+            $stmt2->execute([$course['id']]);
+            $course['exercises'] = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return $courses;
+    }
 }
 ?>

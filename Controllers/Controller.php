@@ -17,6 +17,13 @@ class Controller {
 
         return new Response(httpCode: 200, responseString: json_encode($courses));
     }
+
+    public function coursesWithExercises(): Response {
+
+        $courses = $this->model->coursesWithExercises();
+        
+        return new Response(httpCode: 200, responseString: json_encode($courses));
+    }
 }
 
 ?>
