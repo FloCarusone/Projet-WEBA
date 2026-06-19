@@ -20,9 +20,27 @@ class Router {
                 return $controller->courseDetails($_GET['id']);
             }
 
-            if ($method === 'GET' && $_GET['withExercises'] === 'true') {
+            if ($method === 'GET' && isset($_GET['withExercises'])) {
                 return $controller->coursesWithExercises();
             }
+
+             if ($action === 'getCourseDetails') {
+                $id = $_GET['id'] ?? null;
+                return $controller->getCourseDetails($id);
+            }
+
+            if ($method === 'GET') {
+                return $controller->courses();
+            }
+
+            if ($method === 'POST'){
+                return $controller->addNewCourse();
+            }
+
+            if($method === 'DELETE' && isset($_GET['id'])){
+                return $controller->deleteCourse($_GET['id']);
+            }
+
         }
         return null;
     }

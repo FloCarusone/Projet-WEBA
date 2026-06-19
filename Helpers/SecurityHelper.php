@@ -12,7 +12,7 @@ class SecurityHelper {
         //vérifie que le header Autorization existe 
         if (isset($headers["Authorization"])){
             $authHeader = $headers["Authorization"];
-        } else{
+        } else {
             return false;
         }
 
