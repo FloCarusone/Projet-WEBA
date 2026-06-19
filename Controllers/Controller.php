@@ -73,7 +73,10 @@ class Controller {
     }
 
 
-
+    public function lateCourses(): Response {
+        $courses = $this->model->lateCourses();
+        return new Response(httpCode: 200, responseString: json_encode($courses));
+    }
 
 }
 

@@ -42,6 +42,13 @@ class Router {
             }
 
         }
+
+        if ($action === 'latecourses') {
+
+            if ($method === 'GET') {
+                return $controller->lateCourses();
+            }
+        }
         return null;
     }
 }
