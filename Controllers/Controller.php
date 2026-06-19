@@ -50,7 +50,12 @@ class Controller {
         }
 
         $name = $_POST['name'];
-        $deadline = $_POST['deadline'] ?? null;
+
+        if (isset($_POST['deadline'])) {
+            $deadline = $_POST['deadline'];
+        } else {
+            $deadline = null;
+        }
 
         $newId = $this->model->addNewCourse($name, $deadline);
 
